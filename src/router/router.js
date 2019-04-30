@@ -1,24 +1,27 @@
-import React, {Component} from 'react';
+import React, { Component, Fragment } from "react";
 // 引入BrowserRouter
-import { HashRouter } from 'react-router-dom';
+import { HashRouter } from "react-router-dom";
+import { Route } from "react-router-dom";
+import Two from "../page/two";
+import One from "../page/one";
+import ListView from "../page/test/list-view";
 
-const history = require("history").createBrowserHistory
-// 直接引入页面组件
-import Intro from './index';
-class Router extends Component{
-	constructor(props) {
-		super(props);
-		this.state = {
-			
-		};
-	}
-	render() {
-		return (
-			<HashRouter>{/*history会自动传入BrowserRouter*/}
-				<Intro />{/*不需要单独配置路由，直接加载页面即可，同时注意只允许一个children*/}
-			</HashRouter>
-		);
-	}
-};
+class Router extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+  render() {
+    return (
+      <HashRouter>
+        <Fragment>
+          <Route exact path={`/`} component={ListView} />
+          <Route path={`/one`} component={One} />
+          <Route path={`/two`} component={Two} />
+        </Fragment>
+      </HashRouter>
+    );
+  }
+}
 
 export default Router;
